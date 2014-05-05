@@ -1,0 +1,25 @@
+#carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+    %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+    %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+  .carousel-inner
+    .item.active
+      = image_tag 'sol_kupit.jpg', alt: ((@page.title if @page.present?).to_s + ' ' + (@area.title if @area.present?).to_s)
+      .carousel-caption
+        %h3 Купить соль
+
+    .item
+      = image_tag 'spice_kupit.jpg', alt: ((@page.title if @page.present?).to_s + ' ' + (@area.title if @area.present?).to_s)
+      .carousel-caption
+        %h3 Купить спайс
+    .item
+      = image_tag 'reagent_kupit.jpg', alt: ((@page.title if @page.present?).to_s + ' ' + (@area.title if @area.present?).to_s)
+      .carousel-caption
+        %h3 Купить реагент
+
+
+  %a.left.carousel-control{"data-slide" => "prev", href: "#carousel-example-generic", style: 'margin-top:3em;'}
+    %span <
+  %a.right.carousel-control{"data-slide" => "next", href: "#carousel-example-generic", style: 'margin-top:3em;'}
+    %span >

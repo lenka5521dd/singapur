@@ -1,0 +1,18 @@
+= link_to 'Edit', edit_dialog_path(@dialog)
+\|
+= link_to 'Back', dialogs_path
+
+%p#notice= notice
+%p
+  - geo = Geocoder.search @dialog.ip
+  %b= geo[0].data['ip']
+  %b= geo[0].data['city']
+  %b= geo[0].data['country_name']
+%p
+  %b Coordinates:
+  = @dialog.coordinates
+%p
+  %b City:
+  = @dialog.city
+
+= render 'messages/index'

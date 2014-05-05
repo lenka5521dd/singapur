@@ -1,0 +1,3 @@
+= link_to 'Новый город', new_area_path, class: 'btn btn-default' if current_user.try(:admin)
+- @areas.try(:each) do |area|
+  %a{href: ('/' + area.slug)}= area.title

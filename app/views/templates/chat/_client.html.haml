@@ -1,0 +1,17 @@
+- content_for :js do
+  = javascript_include_tag "http://js.pusherapp.com/2.1/pusher.js"
+  = audio_tag("yo.mp3", id: 'audio_chat')
+
+%h3
+  Оператор
+  %span{style: 'color:green;text-decoration:underline;font-size:.75em;'} online
+#control_chat
+  %textarea#message.form-control{ rows:"3" }
+  %a#send_message.btn.btn-default Отправить
+#messages_client.messages
+- content_for :js do
+  = javascript_include_tag 'pusher_client'
+
+
+
+-# Поздравляю друг, ты поддержал проект - "Жизнь без спайса и соли" - прочитай книгу "Мирный воин" или посмотри фильм "Процветание" - часть средств идет на благотворительность. Можешь оценить работу бота

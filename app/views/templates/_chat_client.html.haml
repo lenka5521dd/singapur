@@ -1,0 +1,9 @@
+%br
+#invite Пишите все вопросы в этот чат
+#control_chat
+  %textarea#message.form-control{ rows:"3", placeholder: 'пишем все сюда'}
+  %a#send_message.btn.btn-block.btn-lg.btn-danger Отправить
+#messages_client.messages
+.list-group
+- content_for :js do
+  = javascript_include_tag 'pusher_client'

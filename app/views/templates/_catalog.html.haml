@@ -1,0 +1,18 @@
+.panel.panel-default
+
+  .panel-heading
+    .text-center
+      %b Каталог
+
+  %table.table.table-condensed.table-bordered
+    %thead
+      %tr
+        %th Товар
+        %th Вес
+        %th Цена
+    %tbody
+      - Product.each do |p|
+        %tr
+          %td= link_to p.title, p
+          %td= p.weight
+          %td= p.price

@@ -1,0 +1,5 @@
+.list-group
+  - Message.iqs.order_by('k desc').each do |message|
+    %a.list-group-item.insert-to-dialog{href: '#', id: message.id, style: 'width:90%;'}
+      %span.btn.btn-default.btn-xs= message.k
+      %small.list-group-item-text= message.text

@@ -1,0 +1,7 @@
+.row
+  .col-xs-3
+    = render 'dialogs/dialog/dialogs'
+  .col-xs-6
+    = render 'dialogs/dialog/dialog' if @dialog.present?
+  .col-xs-3#scroll-eba
+    = render 'dialogs/dialog/fuck'

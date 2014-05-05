@@ -1,0 +1,20 @@
+- content_for :js do
+  = javascript_include_tag "http://js.pusherapp.com/2.1/pusher.js"
+  = audio_tag("yo.mp3", id: 'audio_chat')
+
+
+- dialog = Dialog.where(id: params[:dialog]).first
+- if dialog.present?
+  %b#dialog_id= params[:dialog]
+  #control_chat
+    %textarea#message.form-control{ rows:"3" }
+    %a#send_message.btn.btn-default Отправить
+#messages_admin.messages
+- if dialog.present?
+  %a#done.btn.btn-danger.btn-xs{href: '#', dialog: dialog.id} заблокировать
+  - dialog.messages.desc(:created_at).each do |message|
+    %b=message.author
+    %i=message.text
+    %br 
+- content_for :js do
+  = javascript_include_tag 'pusher_admin'

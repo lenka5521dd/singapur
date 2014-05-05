@@ -1,0 +1,19 @@
+= form_for @dialog do |f|
+  - if @dialog.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dialog.errors.count, "error")} prohibited this dialog from being saved:"
+      %ul
+        - @dialog.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :ip
+    = f.text_field :ip
+  .field
+    = f.label :coordinates
+    = f.text_field :coordinates
+  .field
+    = f.label :city
+    = f.text_field :city
+  .actions
+    = f.submit 'Save'

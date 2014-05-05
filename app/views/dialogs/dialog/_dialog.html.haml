@@ -1,0 +1,37 @@
+.panel.panel-default
+  .panel-heading
+    .pull-right
+      = link_to '-', @dialog, method: :delete, confirm: 'удалять бля?', class: 'btn btn-default btn-xs'
+      = link_to '/', edit_dialog_path(@dialog), class: 'btn btn-default btn-xs'
+      %a#done.btn.btn-danger.btn-xs{href: '#', dialog: @dialog.id} заблокировать
+    - if @geo.present?
+      %h5
+        = @geo[0].data['ip']
+        = @geo[0].data['city']
+        = @geo[0].data['country_name']
+        = @dialog.url_start
+        = @area.title if @area.present?
+    %small#dialog_id= params[:dialog]
+
+  .panel-body
+    #control_chat
+      %textarea#message.form-control{ rows:"3" }
+      %a#send_message.btn.btn-danger.btn-block Отправить
+
+
+.list-group#messages_admin
+  - @messages.each do |message|
+    %a.list-group-item{href: '#', class: ((message.author == 'admin') ? 'list-group-item-warning text-right' : 'list-group-item-success' )}
+      %h5.list-group-item-heading
+        = message.text
+      %p.list-group-item-text
+        = message.created_at.strftime('%B %e at %l:%M %p')
+    .text-right
+      = link_to 'ред', edit_message_path(message), class: 'btn btn-default btn-xs'
+
+
+
+- content_for :js do
+  = javascript_include_tag "http://js.pusherapp.com/2.1/pusher.js"
+  = javascript_include_tag 'pusher_admin'
+  = audio_tag("yo.mp3", id: 'audio_chat')

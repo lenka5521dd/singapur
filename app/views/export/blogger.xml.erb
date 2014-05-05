@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/' xmlns:gd='http://schemas.google.com/g/2005' xmlns:thr='http://purl.org/syndication/thread/1.0'>
+  <title type='text'>LegalPort</title>
+  <generator version='7.00' uri='http://www.blogger.com'>Blogger</generator>
+
+  <% @areas.each_with_index do |area, index|%>
+  <entry>
+    <id><%=index+1%></id>
+    <published>2014-04-09T23:59:06.5607392+04:00</published>
+    <updated>2014-04-09T23:59:06.5607392+04:00</updated>
+    <category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/blogger/2008/kind#post'/>
+    <title type='text'>соль спайс закладки <%=area.title%></title>
+    <content type='html'><%='<h1><a href="http://legalport.biz/' + area.slug + '">соль спайс закладки ' + area.title + ' - legalport.biz</a><h1>'%></content>
+  </entry>
+  <% end %>
+
+</feed>

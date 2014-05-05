@@ -1,0 +1,15 @@
+- if current_user.try(:admin)
+  = link_to destroy_user_session_path, method: 'delete', class: 'btn btn-default' do
+    Выход
+  = render 'templates/chat'
+
+- else
+  .row
+    .col-lg-8.col-md-9.col-sm-12
+      = render 'templates/chat'
+      %hr
+      = render 'templates/slider'
+      %hr
+      = render 'templates/catalog'
+      %hr
+      = render 'templates/reviews'

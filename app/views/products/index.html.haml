@@ -1,0 +1,30 @@
+%h1 Listing products
+
+%table.table.table-bordered.table-condensed
+  %tr
+    %th Image
+    %th Title
+    %th Desc
+    %th Price
+    %th Weight
+    %th Avail
+    %th
+    %th
+    %th
+
+  - @products.each do |product|
+    %tr
+      %td
+        %img{src: ('assets/' + product.image_title.to_s)}
+      %td= product.title
+      %td= product.desc
+      %td= product.price
+      %td= product.weight
+      %td= product.avail
+      %td= link_to 'Show', product
+      %td= link_to 'Edit', edit_product_path(product)
+      %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Product', new_product_path

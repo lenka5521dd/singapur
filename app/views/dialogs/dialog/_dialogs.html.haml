@@ -1,0 +1,13 @@
+.list-group
+  - @dialogs.each do |dialog|
+    - messages = dialog.messages
+    = link_to params.merge(dialog: dialog.id), class: ('list-group-item' + (' active' if dialog.no_read == '1').to_s) do
+      %h5.list-group-item-heading
+        = (dialog.url_start.split('/')[1] || 'диалог') if dialog.url_start.present?
+      %p.list-group-item-text
+        - if messages.count > 0
+          %span.btn.btn-xs{class: 'btn-danger'}= messages.count
+        = dialog.updated_at.strftime('%B %e at %l:%M %p') if dialog.updated_at.present?
+
+
+= paginate @dialogs

@@ -1,0 +1,23 @@
+- if current_user.try(:admin)
+  = render 'templates/chat'
+
+- else
+  .row
+    .col-lg-8.col-md-9.col-sm-12
+      %h1
+        - if @page.present?
+          = @page.title
+        - else
+          Поставки и заклады легальных веществ
+        = @area.title
+      %strong Общаемся в чате
+      %br
+      насчет покупок, поставок и работы обращайтесь к оператору
+      %hr
+      = render 'templates/slider'
+      %hr
+      = render 'templates/catalog'
+      %hr
+      = render 'templates/reviews'
+    .col-lg-4.col-md-4.col-sm-12.col-xs-12#chatEbanaRot
+      = render 'templates/chat'

@@ -1,0 +1,7 @@
+- content_for :js do
+  = javascript_include_tag "http://js.pusherapp.com/2.1/pusher.js"
+
+- if current_user.try(:admin)
+  = render 'templates/chat_admin'
+- else
+  = render 'templates/chat_client'

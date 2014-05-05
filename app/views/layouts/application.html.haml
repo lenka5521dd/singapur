@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    - if @page.present? && @area.present?
+      %title= @page.title.to_s + ' ' + @area.title
+    - else
+      %title= "Гарантии, Купить спайс, соль, курительные смеси" + ((' - ' + @area.title.to_s ) if @area.present?).to_s
+    %meta{content: 'Гарантии, Закладки, Поставки, Купить спайс, Соль для ванн, Курительные смеси', name: "Keywords"}
+    %meta{content: 'Гарантии, Проверенный магазин, отзывы клиентов', name: "Description"}
+    %meta{name: "google-site-verification", content: "On1KzXakGbsobQNGqUL9ch9W6pLcaAmP-g-lamDxTcg"}
+    %meta{name: 'yandex-verification', content: '6b013506ad49d501'}
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = yield :js
+    = javascript_include_tag 'jquery.ui.touch-punch.min'
+    = csrf_meta_tags
+  %body
+    = render 'layouts/navbar'
+    .container
+      #notice= notice
+      = yield
+
+    -#%small
+    -#  - @pages.each do |p|
+    -#    %a{href: ('http://kupilegal.ru/' + @area.slug + '/' + p.slug)}= p.title + ' ' + @area.title
+    - unless Rails.env.development?
+      - unless current_user.try(:admin)
+        = render 'templates/ya'
+        = render 'templates/ga'
+
+-#42b027d2001e4bb24cf5@cloudmailin.net

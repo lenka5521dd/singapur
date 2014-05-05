@@ -1,0 +1,21 @@
+= form_for @message, class: 'form-horizontal' do |f|
+  - if @message.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:"
+      %ul
+        - @message.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    .col-sm-2.control-label Автор
+    .col-sm-10
+      = f.select(:author, ['iq', 'admin', 'parya'], class: 'form-control', include_blank: true )
+
+  .form-group
+    .col-sm-2.control-label Текст
+    .col-sm-10
+      = f.text_area :text, class: 'form-control', placeholder: "текст", rows: 3
+
+
+  .actions
+    = f.submit 'Сохранить', class: 'btn btn-default'

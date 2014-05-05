@@ -1,0 +1,23 @@
+%nav.navbar.navbar-inverse{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-9", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Навигация
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "#"} LegalPort
+    #bs-example-navbar-collapse-9.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{href: "#"} Курьером
+        %li
+          %a{href: "#"} Почтой
+        %li
+          %a{href: "#"} Товар
+        %li
+          %a{href: "#"} Отзывы
+        - if current_user.try(:admin)
+          %li= link_to ('Диалоги ' + Dialog.count.to_s ), dialogs_path
+          %li= link_to ('Сообщения ' + Message.count.to_s), messages_path
+          %li= link_to ('Отзывы ' + Review.count.to_s), reviews_path

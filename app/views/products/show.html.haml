@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Image:
+  = image_tag @product.image
+  -# %img{src: ('assets/' + @product.image_title.to_s)}
+%p
+  %b Title:
+  = @product.title
+%p
+  %b Desc:
+  = @product.desc
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Weight:
+  = @product.weight
+%p
+  %b Avail:
+  = @product.avail
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
